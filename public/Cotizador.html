@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cotizador | Eternal Rest Premium Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#43655c",
+                        "tertiary-container": "#2d3a23",
+                        "background": "#fbf9f4",
+                        "secondary-container": "#fadca4",
+                        "primary-fixed": "#c5eadf",
+                        "on-secondary-container": "#756033",
+                        "outline-variant": "#c1c8c4",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#3d4b32",
+                        "secondary": "#715b2f",
+                        "on-background": "#1b1c19",
+                        "tertiary": "#18240f",
+                        "primary-fixed-dim": "#aacec3",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#414846",
+                        "inverse-surface": "#30312e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#bcccab",
+                        "on-error": "#ffffff",
+                        "primary": "#01261f",
+                        "on-secondary-fixed": "#261900",
+                        "inverse-primary": "#aacec3",
+                        "surface": "#fbf9f4",
+                        "surface-container-highest": "#e4e2dd",
+                        "surface-container-low": "#f5f3ee",
+                        "on-primary-fixed": "#00201a",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1a3c34",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#d8e8c6",
+                        "on-tertiary-fixed": "#131f0a",
+                        "surface-container-high": "#eae8e3",
+                        "on-surface": "#1b1c19",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "secondary-fixed": "#fddfa7",
+                        "outline": "#717976",
+                        "surface-container": "#f0eee9",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#83a69c",
+                        "on-tertiary-container": "#95a486",
+                        "on-primary-fixed-variant": "#2b4d44",
+                        "secondary-fixed-dim": "#dfc38d",
+                        "on-secondary-fixed-variant": "#57441a",
+                        "surface-dim": "#dbdad5",
+                        "surface-bright": "#fbf9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .serif-italic { font-family: 'Newsreader'; font-style: italic; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-container">
+<div class="flex min-h-screen">
+<!-- Side Navigation -->
+<aside class="hidden lg:flex flex-col h-screen w-64 py-8 bg-[#f5f3ee] sticky top-0">
+<div class="px-8 mb-12">
+<h1 class="font-headline italic text-lg text-[#01261f]">Eternal Rest</h1>
+<p class="font-label uppercase tracking-widest text-[10px] text-[#01261f]/60 mt-1">Premium Services</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-[#01261f]/50 py-4 px-6 hover:bg-[#ffffff]/50 transition-all duration-300 font-label uppercase tracking-widest text-xs" href="/">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+</a>
+<a class="flex items-center gap-4 bg-[#ffffff] text-[#01261f] rounded-r-full py-4 px-6 font-bold font-label uppercase tracking-widest text-xs" href="#">
+<span class="material-symbols-outlined">description</span> Nueva Cotización
+</a>
+<a class="flex items-center gap-4 text-[#01261f]/50 py-4 px-6 hover:bg-[#ffffff]/50 transition-all duration-300 font-label uppercase tracking-widest text-xs" href="#">
+<span class="material-symbols-outlined">calculate</span> Calculadora
+</a>
+<a class="flex items-center gap-4 text-[#01261f]/50 py-4 px-6 hover:bg-[#ffffff]/50 transition-all duration-300 font-label uppercase tracking-widest text-xs" href="#">
+<span class="material-symbols-outlined">person</span> Clientes
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="p-4 bg-primary-container rounded-xl flex items-center gap-3">
+<img alt="Agent Profile" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJejM2mJeV9cnhdUV59R90bIu9gxZ5cF8PDxmlkRAARR-OPQ5fU1ehEPhbtgdbTJMC-zl1PlyHzWxCCuySGD_gmmKFCXYPWbmD1Gflu3kpfJafxak-MqJhGlBxNzm8jWCwlMewK5tTnwmJVkC0uktX6vPJn_SL_otw9FCYmX6iqAT4ZPLyr-Y64x3g3yvrLd64FG2gyKSQK2n0Qs7pSymJb1UHhBKnEZU04ZhppJtZPFPwAVrdoDqBWcwQuX40bGcv5OAf_sBeOR0e"/>
+<div>
+<p class="text-[10px] text-on-primary-container/60 uppercase tracking-widest">Agente</p>
+<p class="text-xs font-bold text-white">Julio Rivas</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-8 py-6 max-w-full bg-[#fbf9f4]">
+<h2 class="text-2xl font-headline italic text-[#01261f] tracking-tight">Eternal Rest Quoting</h2>
+<div class="flex items-center gap-8">
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-[#01261f]/60 font-headline italic hover:text-[#715b2f] transition-colors duration-300" href="#">Cotizaciones Activas</a>
+<a class="text-[#01261f]/60 font-headline italic hover:text-[#715b2f] transition-colors duration-300" href="#">Archivo</a>
+<a class="text-[#01261f]/60 font-headline italic hover:text-[#715b2f] transition-colors duration-300" href="#">Directorio de Clientes</a>
+</div>
+<span class="material-symbols-outlined text-primary text-2xl cursor-pointer">account_circle</span>
+</div>
+</header>
+<div class="bg-[#f5f3ee] h-[1px] w-full"></div>
+<div class="p-8 lg:p-12 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Form Column -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Client Section -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-secondary font-bold">01</span>
+<h3 class="text-3xl font-headline italic text-primary">Información del Cliente</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Nombre Completo</label>
+<input class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300" placeholder="Ej. Juan Pérez" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">RUT</label>
+<input class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300" placeholder="12.345.678-9" type="text"/>
+</div>
+</div>
+</section>
+<!-- Product Section -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-secondary font-bold">02</span>
+<h3 class="text-3xl font-headline italic text-primary">Configuración del Producto</h3>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Tipo de Servicio</label>
+<select class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300 appearance-none">
+<option>Sepultura Tradicional</option>
+<option>Cremación</option>
+<option>Jardín Memorial</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Parque Cementerio</label>
+<select class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300 appearance-none">
+<option>Parque del Recuerdo</option>
+<option>Sendero de Paz</option>
+<option>Memorial Oriente</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Capacidad (N° de Niveles/Urnas)</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-4 border border-secondary/20 hover:border-secondary text-primary transition-all">01</button>
+<button class="py-4 bg-primary text-on-primary font-bold">02</button>
+<button class="py-4 border border-secondary/20 hover:border-secondary text-primary transition-all">03</button>
+<button class="py-4 border border-secondary/20 hover:border-secondary text-primary transition-all">04+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Financing Section -->
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="text-xs font-label uppercase tracking-[0.2em] text-secondary font-bold">03</span>
+<h3 class="text-3xl font-headline italic text-primary">Detalle Financiero</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Valor UF Hoy</label>
+<input class="w-full bg-surface-container-high border-none rounded-none py-4 px-4 text-primary/60" readonly="" type="text" value="$36.420,12"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Descuento (%)</label>
+<input class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300" placeholder="0" type="number"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Pie Inicial (UF)</label>
+<input class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300" placeholder="Min. 20 UF" type="number"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">N° de Cuotas</label>
+<select class="w-full bg-surface-container-high border-none rounded-none focus:ring-0 focus:bg-surface-container-lowest border-b border-transparent focus:border-secondary py-4 px-4 transition-all duration-300 appearance-none">
+<option>12 Meses</option>
+<option>24 Meses</option>
+<option selected="">36 Meses</option>
+<option>48 Meses</option>
+<option>60 Meses</option>
+</select>
+</div>
+<div class="md:col-span-2 space-y-1">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/70 ml-1">Periodo de Gracia (Carencia)</label>
+<div class="flex items-center gap-6 py-2">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary/20" name="grace" type="radio"/>
+<span class="text-sm font-medium">Sin Carencia</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary/20" name="grace" type="radio"/>
+<span class="text-sm font-medium">30 Días</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer">
+<input class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary/20" name="grace" type="radio"/>
+<span class="text-sm font-medium">60 Días</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sticky Results Column -->
+<div class="lg:col-span-5">
+<div class="sticky top-12">
+<div class="bg-surface-container-lowest rounded-xl shadow-[30px_0_60px_-15px_rgba(27,28,25,0.05)] overflow-hidden">
+<div class="p-1 w-full bg-gradient-to-r from-primary to-primary-container"></div>
+<div class="p-8 lg:p-10">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h4 class="text-xs font-label uppercase tracking-[0.2em] text-secondary font-bold mb-1">Resumen de Cotización</h4>
+<p class="text-[10px] text-on-surface-variant/60 font-medium">Válido por 5 días hábiles</p>
+</div>
+<span class="material-symbols-outlined text-primary/20 scale-150">receipt_long</span>
+</div>
+<div class="space-y-8">
+<div class="flex justify-between items-end">
+<span class="text-sm text-on-surface-variant/80">Valor con Descuento</span>
+<span class="text-xl font-headline italic text-primary">145.50 UF</span>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-sm text-on-surface-variant/80">Pie Inicial</span>
+<span class="text-xl font-headline italic text-primary">29.10 UF</span>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-sm text-on-surface-variant/80">Saldo Financiado</span>
+<span class="text-xl font-headline italic text-primary">116.40 UF</span>
+</div>
+<div class="h-[1px] bg-surface-container-highest"></div>
+<div class="py-6">
+<div class="flex flex-col gap-1 text-center">
+<span class="text-xs font-label uppercase tracking-widest text-secondary font-bold">Cuota Mensual</span>
+<span class="text-5xl font-headline italic text-primary mt-2">4.12 UF</span>
+<span class="text-xs text-on-surface-variant/50 mt-1">Approx. $150.051 CLP</span>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-highest"></div>
+<div class="flex justify-between items-center bg-surface-container-low p-4 rounded-lg">
+<span class="text-sm font-medium text-primary">Mantención Anual</span>
+<span class="text-lg font-headline italic text-secondary">2.50 UF</span>
+</div>
+</div>
+<div class="mt-12 space-y-4">
+<button class="w-full bg-primary text-on-primary py-5 rounded-xl font-bold uppercase tracking-widest text-xs shadow-xl shadow-primary/10 hover:translate-y-[-2px] transition-all duration-300">
+Guardar Cotización
+</button>
+<button class="w-full bg-transparent text-primary py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 border border-primary/10 hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-sm">share</span> Compartir con Cliente
+</button>
+</div>
+</div>
+</div>
+<!-- Decorative Quote Element -->
+<div class="mt-8 px-6 text-center italic font-headline text-primary/40 text-lg leading-relaxed">
+"Un espacio de dignidad y calma eterna para quienes amamos."
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Background Decorative Elements -->
+<div class="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none opacity-20">
+<div class="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] rounded-full bg-primary-container blur-[120px]"></div>
+<div class="absolute bottom-[-5%] left-[10%] w-[30%] h-[50%] rounded-full bg-secondary-container blur-[100px]"></div>
+</div>
+</body></html>

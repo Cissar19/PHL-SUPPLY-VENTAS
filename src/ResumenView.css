@@ -1,0 +1,225 @@
+.resumen-main {
+  padding: 40px 32px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 720px) {
+  .resumen-main { padding: 22px 18px 80px; }
+  .resumen-cols { grid-template-columns: 1fr !important; }
+}
+
+.resumen-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.resumen-header h2 {
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.resumen-mes-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-4);
+  text-transform: capitalize;
+  letter-spacing: .1em;
+}
+
+/* KPI Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.kpi-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kpi-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--ink-4);
+}
+
+.kpi-value {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.kpi-uf   { font-size: 1.15rem; color: var(--accent); }
+.kpi-green { color: var(--success); }
+.kpi-blue  { color: #2563eb; }
+
+.kpi-sub {
+  font-size: 0.78rem;
+  color: var(--ink-4);
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 2-column layout */
+.resumen-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.resumen-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.resumen-card h3 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--accent);
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Bar chart (vertical) */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 120px;
+  padding-bottom: 28px;
+  position: relative;
+}
+
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+}
+
+.bar-track {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  background: var(--bg-deep);
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  min-height: 4px;
+}
+
+.bar-fill {
+  width: 100%;
+  background: var(--accent-wash);
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s;
+}
+
+.bar-fill-active { background: var(--accent); }
+
+.bar-count {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--ink-4);
+  text-transform: capitalize;
+  letter-spacing: .06em;
+}
+
+/* Estado bars (horizontal) */
+.estado-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.estado-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.estado-bar-label {
+  font-size: 0.82rem;
+  color: var(--ink-2);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.prod-label {
+  width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.78rem;
+}
+
+.estado-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-deep);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.estado-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s;
+  min-width: 4px;
+}
+
+.estado-bar-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-3);
+  width: 24px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.resumen-empty {
+  text-align: center;
+  color: var(--ink-3);
+  padding: 48px;
+  font-size: 0.95rem;
+}

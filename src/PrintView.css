@@ -1,0 +1,138 @@
+/* Print overlay — hidden on screen, shown only when printing */
+.print-overlay {
+  display: none;
+}
+
+@media print {
+  /* Hide everything except the print overlay */
+  body > #root > .page > *:not(.print-overlay) {
+    display: none !important;
+  }
+
+  .print-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 9999;
+    padding: 0;
+  }
+
+  @page {
+    margin: 20mm 18mm;
+    size: A4 portrait;
+  }
+}
+
+.print-page {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #1a1a2e;
+  font-size: 11pt;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.print-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #1a3a5c;
+}
+
+.print-empresa {
+  font-size: 18pt;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin: 0;
+}
+
+.print-subtitulo {
+  font-size: 10pt;
+  color: #6a7a8a;
+  margin-top: 2px;
+}
+
+.print-fecha {
+  font-size: 10pt;
+  color: #6a7a8a;
+  text-align: right;
+}
+
+.print-fecha span {
+  font-weight: 600;
+}
+
+.print-uf-ref {
+  font-size: 9pt;
+  color: #8a9ab0;
+  margin-top: 3px;
+}
+
+.print-section {
+  margin-bottom: 18px;
+}
+
+.print-section h2 {
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #1a3a5c;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid #e0e8f0;
+}
+
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10.5pt;
+}
+
+.print-table td {
+  padding: 5px 6px;
+  border-bottom: 1px solid #f0f4f8;
+  vertical-align: top;
+}
+
+.print-table td:first-child {
+  color: #6a7a8a;
+  width: 40%;
+}
+
+.print-table td:last-child {
+  color: #1a1a2e;
+}
+
+.print-row-highlight td {
+  background: #f5f8fc;
+  font-weight: 500;
+}
+
+.print-clp {
+  font-size: 9pt;
+  color: #6a8aaa;
+  margin-left: 6px;
+}
+
+.print-nota {
+  font-size: 10pt;
+  color: #3a4a5a;
+  background: #f8fafc;
+  border-left: 3px solid #d0d8e4;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
+  white-space: pre-wrap;
+}
+
+.print-footer {
+  margin-top: 32px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e8f0;
+  font-size: 8.5pt;
+  color: #9aaab8;
+  text-align: center;
+}
