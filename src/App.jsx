@@ -1141,7 +1141,7 @@ function AppInner({ user }) {
                         <option value="perdida">Perdida</option>
                       </select>
                       <button className="btn-icon" title="Duplicar" onClick={() => handleDuplicar(c)}>⎘</button>
-                      <button className="btn-icon" title="Imprimir" onClick={() => setPrintCot(c)}>⎙</button>
+                      <button className="btn-print" onClick={() => setPrintCot(c)}>Exportar PDF</button>
                       <button className="btn-delete" onClick={() => handleEliminar(c.id)}>✕</button>
                     </div>
                   </div>

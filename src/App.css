@@ -965,6 +965,21 @@ input, select, textarea { font-family: inherit; color: inherit; }
 .estado-cerrada   { background: #dcfce7; color: #15803d; }
 .estado-perdida   { background: #fee2e2; color: #b91c1c; }
 
+.btn-print {
+  background: var(--accent-tint);
+  border: 1px solid var(--accent-wash);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 6px;
+  transition: all .15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.btn-print:hover { background: var(--accent-wash); }
+
 .btn-delete {
   background: none;
   border: none;
