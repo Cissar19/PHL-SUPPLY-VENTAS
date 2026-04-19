@@ -34,39 +34,35 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Top header (fondo blanco) ── */
+/* ── Top header (fondo verde oscuro) ── */
 .pv-header {
   padding: 44px 52px 36px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background: var(--bg);
+  background: var(--green-deep);
 }
 
 /* Brand izquierda */
 .pv-brand { display: flex; flex-direction: column; gap: 4px; }
 
-.pv-ps {
+.pv-brand-logo-row {
   font-family: 'DM Sans', sans-serif;
-  font-size: 40px;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: -2px;
+  font-size: 26px;
+  font-weight: 800;
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
-
-.pv-brand-name {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--ink);
-  letter-spacing: 0.02em;
-}
+.pv-ps-letter { color: var(--gold); }
+.pv-pipe { color: oklch(60% 0.02 193); font-weight: 300; margin: 0 4px; }
+.pv-phl { color: var(--gold); }
+.pv-supply { color: #fff; }
 
 .pv-brand-tagline {
   font-size: 10px;
-  color: var(--muted);
+  color: oklch(65% 0.025 193);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-top: 2px;
@@ -86,7 +82,7 @@
 .pv-doc-title {
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 32px;
-  color: var(--muted);
+  color: #fff;
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.1;
@@ -95,14 +91,15 @@
 
 .pv-doc-date {
   font-size: 13px;
-  color: var(--ink);
+  color: oklch(80% 0.02 193);
   margin-bottom: 6px;
 }
 
 .pv-uf-badge {
   display: inline-block;
-  border: 1px solid var(--rule);
-  color: var(--ink);
+  background: oklch(38% 0.07 193);
+  border: 1px solid oklch(42% 0.07 193);
+  color: #fff;
   font-size: 11.5px;
   padding: 4px 12px;
   border-radius: 3px;
@@ -363,7 +360,7 @@
 }
 .pv-signature-label {
   font-size: 9px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
 }

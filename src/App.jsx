@@ -9,7 +9,8 @@ import LoginView from './LoginView'
 import PlansView from './PlansView'
 import ClientesView from './ClientesView'
 import ResumenView from './ResumenView'
-import PrintView from './PrintView'
+import { pdf } from '@react-pdf/renderer'
+import CotizacionPDF from './PdfDocument'
 import { AnimatedNumber, Field, TextInput, FieldSelect, Slider, Stepper } from './Primitives'
 import {
   PRODUCTOS, PARQUES, PLANES_NF,
@@ -26,7 +27,7 @@ const FAMILIAS = ['Sepultura', 'Complementario', 'Mausoleo', 'Funeraria', 'Ciner
 
 function formatUF(value) {
   if (value === null || value === undefined || isNaN(value)) return '—'
-  return `UF ${Number(value).toLocaleString('es-CL', { minimumFractionDigits: 4, maximumFractionDigits: 4 })}`
+  return `UF ${Number(value).toLocaleString('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 }
 
 function formatRut(raw) {
@@ -468,7 +469,7 @@ function StepResumen({ primerNombre, apellidoPaterno, rut, productoNombre, parqu
           <div className="sum-label">Cuota mensual estimada</div>
           <div className="sum-value big-number">
             {cuotaMensual !== null && cuotaMensual > 0
-              ? <AnimatedNumber value={cuotaMensual} decimals={4} prefix="UF " />
+              ? <AnimatedNumber value={cuotaMensual} decimals={2} prefix="UF " />
               : <span style={{ fontSize: 24, opacity: 0.6 }}>—</span>
             }
           </div>
@@ -481,7 +482,7 @@ function StepResumen({ primerNombre, apellidoPaterno, rut, productoNombre, parqu
           <div className="sum-label">Valor con descuento</div>
           <div className="sum-value">
             {valorConDescuento !== null
-              ? <AnimatedNumber value={valorConDescuento} decimals={4} prefix="UF " />
+              ? <AnimatedNumber value={valorConDescuento} decimals={2} prefix="UF " />
               : '—'}
           </div>
           <div className="sum-meta">Descuento {desc}%</div>
@@ -490,7 +491,7 @@ function StepResumen({ primerNombre, apellidoPaterno, rut, productoNombre, parqu
           <div className="sum-label">Saldo financiado</div>
           <div className="sum-value">
             {saldoSepultura !== null
-              ? <AnimatedNumber value={saldoSepultura} decimals={4} prefix="UF " />
+              ? <AnimatedNumber value={saldoSepultura} decimals={2} prefix="UF " />
               : '—'}
           </div>
           <div className="sum-meta">Después del pie</div>
@@ -502,7 +503,7 @@ function StepResumen({ primerNombre, apellidoPaterno, rut, productoNombre, parqu
               {comision.porcentaje}%
             </div>
             <div className="sum-meta">
-              <AnimatedNumber value={comision.uf} decimals={4} prefix="UF " />
+              <AnimatedNumber value={comision.uf} decimals={2} prefix="UF " />
             </div>
           </div>
         )}
@@ -558,34 +559,34 @@ function LiveSummary({ titular, ufValue, ufError, valorUF, descuentoValor, valor
         <li className="live-row">
           <span className="live-row-label">Valor base</span>
           <span className="live-row-value">
-            {valorUF > 0 ? <AnimatedNumber value={valorUF} decimals={4} suffix=" UF" /> : '—'}
+            {valorUF > 0 ? <AnimatedNumber value={valorUF} decimals={2} suffix=" UF" /> : '—'}
           </span>
         </li>
         <li className="live-row">
           <span className="live-row-label">Descuento</span>
           <span className="live-row-value">
-            {descuentoValor > 0 ? <>− <AnimatedNumber value={descuentoValor} decimals={4} suffix=" UF" /></> : '—'}
+            {descuentoValor > 0 ? <>− <AnimatedNumber value={descuentoValor} decimals={2} suffix=" UF" /></> : '—'}
           </span>
         </li>
         <li className="live-row is-strong">
           <span className="live-row-label">Valor con descuento</span>
           <span className="live-row-value">
             {valorConDescuento !== null
-              ? <AnimatedNumber value={valorConDescuento} decimals={4} suffix=" UF" />
+              ? <AnimatedNumber value={valorConDescuento} decimals={2} suffix=" UF" />
               : '—'}
           </span>
         </li>
         <li className="live-row">
           <span className="live-row-label">Pie</span>
           <span className="live-row-value">
-            {pieUFNum > 0 ? <>− <AnimatedNumber value={pieUFNum} decimals={4} suffix=" UF" /></> : '—'}
+            {pieUFNum > 0 ? <>− <AnimatedNumber value={pieUFNum} decimals={2} suffix=" UF" /></> : '—'}
           </span>
         </li>
         <li className="live-row is-strong">
           <span className="live-row-label">Saldo financiado</span>
           <span className="live-row-value">
             {saldoSepultura !== null
-              ? <AnimatedNumber value={saldoSepultura} decimals={4} suffix=" UF" />
+              ? <AnimatedNumber value={saldoSepultura} decimals={2} suffix=" UF" />
               : '—'}
           </span>
         </li>
@@ -601,7 +602,7 @@ function LiveSummary({ titular, ufValue, ufError, valorUF, descuentoValor, valor
           <li className="live-row is-commission">
             <span className="live-row-label">Comisión {comision.porcentaje}%</span>
             <span className="live-row-value">
-              <AnimatedNumber value={comision.uf} decimals={4} suffix=" UF" />
+              <AnimatedNumber value={comision.uf} decimals={2} suffix=" UF" />
             </span>
           </li>
         )}
@@ -644,7 +645,6 @@ function AppInner({ user }) {
   // Saved quotes
   const [cotizaciones, setCotizaciones] = useState([])
   const [busquedaGuardadas, setBusquedaGuardadas] = useState('')
-  const [printCot, setPrintCot] = useState(null)
   const [toast, setToast] = useState(null)
   const notaTimers = useRef({})
 
@@ -705,15 +705,6 @@ function AppInner({ user }) {
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
-  useEffect(() => {
-    if (!printCot) return
-    const timer = setTimeout(() => {
-      window.print()
-      window.onafterprint = () => setPrintCot(null)
-    }, 120)
-    return () => clearTimeout(timer)
-  }, [printCot])
-
   // Derived
   const producto = getProducto(productoSlug)
   const parquesDisponibles = getParquesDisponibles(productoSlug)
@@ -865,6 +856,20 @@ function AppInner({ user }) {
     }, 600)
   }
 
+  async function handleExportPdf(cot) {
+    try {
+      const blob = await pdf(<CotizacionPDF cot={cot} ufValue={ufValue} />).toBlob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'Cotización — Nuestros Parques.pdf'
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch (err) {
+      showToast('⚠ Error al generar PDF: ' + err.message)
+    }
+  }
+
   function handleDuplicar(c) {
     setProductoSlug(c.productoSlug || SLUG_INICIAL)
     const prod = getProducto(c.productoSlug || SLUG_INICIAL)
@@ -914,8 +919,6 @@ function AppInner({ user }) {
 
   return (
     <div className="app accent-forest density-spacious">
-      {printCot && <PrintView cot={printCot} ufValue={ufValue} />}
-
       <TopBar
         tab={tab}
         onTab={setTab}
@@ -1141,7 +1144,7 @@ function AppInner({ user }) {
                         <option value="perdida">Perdida</option>
                       </select>
                       <button className="btn-icon" title="Duplicar" onClick={() => handleDuplicar(c)}>⎘</button>
-                      <button className="btn-print" onClick={() => setPrintCot(c)}>Exportar PDF</button>
+                      <button className="btn-print" onClick={() => handleExportPdf(c)}>Exportar PDF</button>
                       <button className="btn-delete" onClick={() => handleEliminar(c.id)}>✕</button>
                     </div>
                   </div>

@@ -35,12 +35,15 @@ export default function PrintView({ cot: c, ufValue }) {
         {/* ── HEADER ── */}
         <div className="pv-header">
           <div className="pv-brand">
-            <div className="pv-ps">PS</div>
-            <div className="pv-brand-name">Nuestros Parques</div>
+            <div className="pv-brand-logo-row">
+              <span className="pv-ps-letter">PS</span>
+              <span className="pv-pipe"> | </span>
+              <span className="pv-phl">PHL</span><span className="pv-supply">SUPPLY</span>
+            </div>
             <div className="pv-brand-tagline">Cotización de Servicios</div>
           </div>
           <div className="pv-header-meta">
-            <div className="pv-doc-label">Cotización</div>
+            <div className="pv-doc-label">Documento oficial</div>
             <div className="pv-doc-title">Cotización de Servicios</div>
             <div className="pv-doc-date">{fmtDate(c.fecha)}</div>
             {ufValue && (
@@ -50,7 +53,7 @@ export default function PrintView({ cot: c, ufValue }) {
             )}
           </div>
         </div>
-        <div style={{ height: '1px', background: 'oklch(86% 0.012 193)', margin: '0 52px' }} />
+        <div style={{ height: '2px', background: 'oklch(83% 0.13 85)', margin: '0' }} />
 
         {/* ── BODY ── */}
         <div className="pv-body">
@@ -176,6 +179,13 @@ export default function PrintView({ cot: c, ufValue }) {
                       <div className="pv-sv">{c.carencia} meses</div>
                     </div>
                   )}
+                  {c.comision && (
+                    <div className="pv-mstat">
+                      <label>Comisión</label>
+                      <div className="pv-sv">{fmt(c.comision.uf)}</div>
+                      <div className="pv-ss">{c.comision.porcentaje}% sobre precio</div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -201,7 +211,7 @@ export default function PrintView({ cot: c, ufValue }) {
           </div>
           <div className="pv-signature">
             <div className="pv-signature-line" />
-            <div className="pv-signature-label">Firma del Asesor</div>
+            <div className="pv-signature-label">Firma Ejecutivo / Sello</div>
           </div>
         </div>
 
